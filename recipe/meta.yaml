@@ -1,6 +1,6 @@
 {% set name = "litescope" %}
-{% set version = "2023.12" %}
-{% set sha256 = "dfc0ae42c87c315753332f2eab90570eae302ef1526c1cd1d12cae91159175b3" %}
+{% set version = "2024.04" %}
+{% set sha256 = "211ea2a340728c28e452e6c638c7352b4b2f55b4f5ddca819aa6bf7f1eef0fad" %}
 
 package:
   name: {{ name|lower }}
