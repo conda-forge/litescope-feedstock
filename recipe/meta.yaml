@@ -1,6 +1,6 @@
 {% set name = "litescope" %}
-{% set version = "2024.04" %}
-{% set sha256 = "211ea2a340728c28e452e6c638c7352b4b2f55b4f5ddca819aa6bf7f1eef0fad" %}
+{% set version = "2024.08" %}
+{% set sha256 = "e8dc9cc93f60491addf4191e5eb97390e766a0144efd716395115cffacaee4ad" %}
 
 package:
   name: {{ name|lower }}
@@ -22,9 +22,10 @@ requirements:
   host:
     - python >=3.7
     - pip
+    - setuptools
   run:
     - python >=3.7
-    - litex >=2024.04
+    - litex ~={{ version }}*
     - migen
 
 test:
