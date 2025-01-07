@@ -20,17 +20,19 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - litex ~={{ version }}*
     - migen
 
 test:
   imports:
     - litescope
+  requires:
+    - python {{ python_min }}
   commands:
     - litescope_cli --help
 
