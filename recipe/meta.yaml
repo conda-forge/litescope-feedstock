@@ -1,6 +1,6 @@
 {% set name = "litescope" %}
-{% set version = "2024.08" %}
-{% set sha256 = "e8dc9cc93f60491addf4191e5eb97390e766a0144efd716395115cffacaee4ad" %}
+{% set version = "2024.12" %}
+{% set sha256 = "09e61e96d63228a1674b3653e8952d06d1af3d8f3dd09549ebab2eaadd19c435" %}
 
 package:
   name: {{ name|lower }}
@@ -20,17 +20,19 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
     - setuptools
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - litex ~={{ version }}*
     - migen
 
 test:
   imports:
     - litescope
+  requires:
+    - python {{ python_min }}
   commands:
     - litescope_cli --help
 
