@@ -1,0 +1,59 @@
+schema_version: 1
+
+context:
+  name: litescope
+  version: "2026.04"
+  sha256: 08cb7a101a25d01f42b950e17da42ec7162fce65320ef1b9b7d13132708adb3e
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/enjoy-digital/${{ name }}/archive/refs/tags/${{ version }}.tar.gz
+  sha256: ${{ sha256 }}
+  file_name: ${{ version }}.tar.gz
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-build-isolation --no-deps
+  python:
+    entry_points:
+      - litescope_cli = litescope.software.litescope_cli:main
+
+requirements:
+  host:
+    - python ${{ python_min }}
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - litex ~=${{ version }}*
+    - migen
+
+tests:
+  - python:
+      imports:
+        - litescope
+      pip_check: false
+      python_version:
+        - ${{ python_min }}
+        - "*"
+  - requirements:
+      run:
+        - python ${{ python_min }}
+    script:
+      - litescope_cli --help
+
+about:
+  license: BSD-2-Clause
+  license_file: LICENSE
+  summary: Small footprint and configurable embedded FPGA logic analyzer
+  description: Small footprint and configurable embedded FPGA logic analyzer
+  homepage: https://github.com/enjoy-digital/litescope
+  repository: https://github.com/enjoy-digital/litescope
+
+extra:
+  recipe-maintainers:
+    - timkpaine
