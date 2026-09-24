@@ -2,8 +2,8 @@ schema_version: 1
 
 context:
   name: litescope
-  version: "2026.04"
-  sha256: 08cb7a101a25d01f42b950e17da42ec7162fce65320ef1b9b7d13132708adb3e
+  version: "2026.08"
+  sha256: d94f90a74e0a5aff2df24ef6de05a5cd7dfa522163683d4cb32e863b9ba6ad21
 
 package:
   name: ${{ name|lower }}
@@ -14,7 +14,7 @@ source:
   sha256: ${{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv --no-build-isolation --no-deps
   python:
